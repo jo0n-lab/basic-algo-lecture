@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isGreater(int i,int j){
+	return (i>j);
+}
+bool isLess(int i, int j){
+	return (i<j);
+}
+
+int main(){
+	int arr[10];
+
+	for(int i=0;i<10;i++) arr[i]=i;
+
+	sort(arr,arr+10,isGreater);
+
+	for(auto i:arr) cout<<i;
+
+	sort(arr,arr+10,isLess);
+
+	for(auto i:arr) cout<<i;
+
+}
