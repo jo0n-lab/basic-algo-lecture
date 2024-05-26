@@ -30,10 +30,8 @@ int main() {
         dist_f[i][j] = -1;
       } else if (input == 'J') {
         Q_p.push({i, j});
-        dist_p[i][j] = -1;
       } else if (input == 'F') {
         Q_f.push({i, j});
-        dist_f[i][j] = -1;
       } else
         continue;
     }
@@ -65,29 +63,20 @@ int main() {
       int nx = cur.X + dx[dir];
       int ny = cur.Y + dy[dir];
 
-      if (nx < 0 || nx >= R || ny < 0 || ny >= C)
-        continue;
+      if (nx < 0 || nx >= R || ny < 0 || ny >= C) {
+        cout << dist_p[cur.X][cur.Y] + 1;
+        return 0;
+      }
       if (dist_p[nx][ny] >= 0)
         continue;
 
       dist_p[nx][ny] = dist_p[cur.X][cur.Y] + 1;
-      if (dist_p[nx][ny] >= dist_f[nx][ny])
+      if (dist_p[nx][ny] >= dist_f[nx][ny]) // !!둘다 방문 안한경우,,, -1 인 경우,,,
         continue;
 
       Q_p.push({nx, ny});
     }
   }
 
-  int ans = 0;
-
-  for (int i = 0; i < R; i++) {
-    for (int j = 0; j < C; j++) {
-      if (dist_p[i][j] == -1) {
-        cout << "IMPOSSIBLE";
-        return 0;
-      }
-      ans = max(ans, dist_p[i][j]);
-    }
-  }
-  cout << ans;
+  cout << "IMPOSSIBLE";
 }
