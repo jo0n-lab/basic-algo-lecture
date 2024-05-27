@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int dist[200004];
+int dist[200002];
 
 int dx[3] = {1, -1, 0};
 
@@ -21,6 +21,8 @@ int main() {
   int N, K;
   cin >> N >> K;
 
+  dist[N]=0;dist[K]=0;
+
   queue<int> Q;
   Q.push(N);
 
@@ -32,13 +34,13 @@ int main() {
     for (int dir = 0; dir < 3; dir++) {
       int nx = cur + dx[dir];
 
-	  cout<<nx<<"\n";
+      //	  cout<<nx<<"\n";
 
       if (nx == K) {
         cout << dist[cur] + 1;
         return 0;
       }
-      if (nx < 0 )
+      if (nx < 0 || nx > 200001)
         continue;
       if (dist[nx] > 0)
         continue;
@@ -47,5 +49,5 @@ int main() {
       Q.push(nx);
     }
   }
-  print_dist(N, K);
+  // print_dist(N, K);
 }
