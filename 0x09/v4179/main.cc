@@ -71,9 +71,9 @@ int main() {
         continue;
 
       dist_p[nx][ny] = dist_p[cur.X][cur.Y] + 1;
-      if (dist_p[nx][ny] >= dist_f[nx][ny] && dist_f[nx][ny]!=-1) 
+      if (dist_p[nx][ny] >= dist_f[nx][ny] && dist_f[nx][ny] != -1)
         continue;
-		  // !!둘다 방문 안한경우,,, -1 인 경우,,,
+      // !!둘다 방문 안한경우,,, -1 인 경우,,,
 
       Q_p.push({nx, ny});
     }
