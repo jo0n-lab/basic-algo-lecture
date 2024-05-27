@@ -20,8 +20,13 @@ int main() {
 
   int N, K;
   cin >> N >> K;
+  if (N == K) {
+    cout << 0;
+    return 0;
+  }
 
-  dist[N]=0;dist[K]=0;
+  dist[N] = 0;
+  dist[K] = 0;
 
   queue<int> Q;
   Q.push(N);
@@ -34,7 +39,7 @@ int main() {
     for (int dir = 0; dir < 3; dir++) {
       int nx = cur + dx[dir];
 
-      //	  cout<<nx<<"\n";
+ //     cout << nx << "\n";
 
       if (nx == K) {
         cout << dist[cur] + 1;
