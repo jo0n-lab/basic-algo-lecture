@@ -1,89 +1,74 @@
 #include <bits/stdc++.h>
-using namespace std;
-
 #define X first
 #define Y second
 
-int dx[4] = {1, 0, -1, 0};
-int dy[4] = {0, 1, 0, -1};
+int dx[6] = {1, 0, -1, 0, 0, 0};
+int dy[6] = {0, 1, 0, -1, 0, 0};
+int dz[6] = {0, 0, 0, 0, 1, -1};
 
-int board[1002][1002];
-int dist[1002][1002];
+int board[102][102][102];
+int dist[102][102][102];
 
-void print_board(int N, int M, bool flag) {
-  cout << "\n";
-  if (flag) {
-    for (int i = 0; i < N; i++) {
-      for (int j = 0; j < M; j++) {
-        cout << board[i][j] << " ";
-      }
-      cout << "\n";
-    }
-  } else {
-    for (int i = 0; i < N; i++) {
-      for (int j = 0; j < M; j++) {
-        cout << dist[i][j] << " ";
-      }
-      cout << "\n";
-    }
-  }
-}
+using namespace std;
 
 int main() {
-  ios::sync_with_stdio(0), cin.tie(0);
+  ios::sync_with_stdio(false), cin.tie(NULL);
 
-  int N, M;
-  cin >> M >> N;
+  int N, M, H;
+  cin >> M >> N >> H;
 
-  queue<pair<int, int>> Q;
+  queue<tuple<int, int, int>> Q;
 
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < M; j++) {
-      cin >> board[i][j];
-      if (board[i][j] == 0) {
-        // dist의 개념을 잘 이해할 것.
-        // dist<0 (==-1) 은 초기화 상태로서 미방문 노드
-        dist[i][j] = -1;
+  for (int i = 0; i < H; i++) {
+    for (int j = 0; j < N; j++) {
+      for (int k = 0; k < M; k++) {
+        int input;
+        cin >> input;
+        board[i][j][k] = input;
+        if (input == 0)
+          dist[i][j][k] = -1;
+        else if (input == 1)
+          Q.push({i, j, k});
       }
-      // Q 에 초기값을 미리 넣어둔다.
-      else if (board[i][j] == 1)
-        Q.push({i, j});
     }
   }
 
-  // print_board(N, M);
-
   while (!Q.empty()) {
-    pair<int, int> cur = Q.front();
+    //	tuple<int,int,int> cur=Q.front(); Q.pop();
+    auto cur = Q.front();
     Q.pop();
-    for (int dir = 0; dir < 4; dir++) {
-      int nx = cur.X + dx[dir];
-      int ny = cur.Y + dy[dir];
+    int curX, curY, curZ;
+    tie(curZ, curX, curY) =
+        cur; //중요!! 왼쪽에 변수를 tie로 묶고 오른쪽에 tuple
+    for (int dir = 0; dir < 6; dir++) {
+      int nx = curX + dx[dir];
+      int ny = curY + dy[dir];
+      int nz = curZ + dz[dir];
 
-      if (nx < 0 || nx >= N || ny < 0 || ny >= M)
+      if (nx < 0 || nx >= N || ny < 0 || ny >= M || nz < 0 || nz >= H)
         continue;
-      if (dist[nx][ny] >= 0)
+      else if (dist[nz][nx][ny] >= 0)
         continue;
+      // 물론 두가지 경우를 합칠 수 있으나,, 디버깅 힘들어진다.
 
-      //미방문 노드라면 여기서 재초기화 됌.
-      //기존값과 상관없이 덮어쓰기임.
-      dist[nx][ny] = dist[cur.X][cur.Y] + 1;
-      Q.push({nx, ny});
+      dist[nz][nx][ny] = dist[curZ][curX][curY] + 1;
+      Q.push({nz, nx, ny});
     }
   }
 
   int ans = 0;
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < M; j++) {
-
-      if (dist[i][j] == -1) {
-        cout << -1;
-        return 0;
-      } else {
-        ans = max(ans, dist[i][j]);
+  for (int i = 0; i < H; i++) {
+    for (int j = 0; j < N; j++) {
+      for (int k = 0; k < M; k++) {
+        int tmp = dist[i][j][k];
+        if (tmp == -1) {
+          cout << -1;
+          return 0;
+        }
+        ans = max(tmp, ans);
       }
     }
   }
- // print_board(N, M, false);
+
   cout << ans;
 }
