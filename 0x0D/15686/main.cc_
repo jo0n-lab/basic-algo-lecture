@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define X first
+#define Y second
+
+#define __INPUT__
+#define __DEBUG__
+#define __PRINT__
+
+int N,M;
+int board[52][52];
+
+vector<pair<int,int>> chickens;
+vector<pair<int,int>> houses;
+string type[3]={"empty","house","chicken"};
+
+void print_config(){
+	cout.width(15);
+	cout.fill('-');
+}
+
+void print_board(){
+	print_config();
+	cout<<__FUNCTION__<<"\n";
+
+	for(int i=0;i<N;i++){
+		for(int j=0;j<N;j++){
+			cout<<board[i][j]<<" ";
+		}
+		cout<<"\n";
+	}
+	print_config();
+	cout<<"-\n";
+}
+
+int dist(pair<int,int> house,pair<int,int> chicken){
+	return abs(house.X-chicken.X)+abs(house.Y-chicken.Y);
+}
+
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	cin>>N>>M;
+
+	for(int i=0;i<N;i++){
+		for(int j=0;j<N;j++){
+			int input;cin>>input;
+			if(input==1) houses.push_back({i,j});
+			else if(input==2) chickens.push_back({i,j});
+			cin>>board[i][j];
+		}
+	}
+#ifdef __INPUT__
+	print_board();
+#endif
+
+	
+}
+
