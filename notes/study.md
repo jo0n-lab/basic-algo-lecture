@@ -84,31 +84,13 @@ stl vector 관한 일반적인 사항. 구현한 insert 및 erase 기능들이 �
 for 문을 직관적으로 사용하는 예시가 제시. 다만 위의 e에서 &을 붙이면 값을 변경할 수 있다.
 
 
-![](images/78ada1831c177efbfdc9b159cdbc618b1ac50ef0cda09d53db3e36779976196a.png)  
+![picture 23](images/78ada1831c177efbfdc9b159cdbc618b1ac50ef0cda09d53db3e36779976196a.png)  
 
 야매 연결 리스트 외워두기!!
 
-<<<<<<< HEAD
 5
 1 23 53 77 60
 
-:colorscheme 
+![](images/1716621259907.png)
+![](images/1716622564726.png)
 
-/home/cuberry/algo/basic-algo-lecture/notes/images
-
-screenMarkdown.shHOME
-=======
->>>>>>> 2fde344a7fa4bcb7b961f3fcc9d00a798c11e076
-
-![picture 0](images/a7e2e573db5433792654b26182e0b2c67f0d9caa585935503314f5458c41b0fb.png)  
- 
-
-
-<<<<<<< HEAD
-![](images/Screenshot from 2024-05-22 20-32-04.png)
-
-
-![](/home/cuberry/algo/basic-algo-lecture/notes/imagesScreenshot from 2024-05-22 20-35-56.png)
-=======
-:ㅈㅂ
->>>>>>> 2fde344a7fa4bcb7b961f3fcc9d00a798c11e076
