@@ -1,6 +1,7 @@
 https://blog.encrypted.gg/921
 https://github.com/encrypted-def/basic-algo-lecture
 
+![alt text](image.png)
 
 ![picture 0](images/58c59706080c7d2121f317b59797b524f8b64959ace7e848fae17be098d89e31.png)  
 
