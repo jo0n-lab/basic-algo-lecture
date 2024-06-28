@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>study.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>https://blog.encrypted.gg/921
+https://github.com/encrypted-def/basic-algo-lecture</p>
+<p><img src="image.png" alt="alt text"></p>
+<p><img src="images/58c59706080c7d2121f317b59797b524f8b64959ace7e848fae17be098d89e31.png" alt="picture 0"></p>
+<p><img src="images/f5002216d46b3e2bc83db289fb587789285693a4f3d6229d25440feae23cdd40.png" alt="picture 2"></p>
+<p><img src="images/c0d792c9991bcab1e8c9f2261064fbf8960a37f26bdba5a31014aa1d0f5d8f62.png" alt="picture 6"></p>
+<p><img src="images/c2f171e863bd082368c25762b90d53cb36e5314b8f36936677b982e925e55155.png" alt="picture 3"></p>
+<p><img src="images/a59ce95ffc466c4c9e805b7b50d826df6b54e5c115dec1143beb96a2db9f56a2.png" alt="picture 4"></p>
+<p><img src="images/41bf5935b5a4e5b0f6d94e58f2c7537b158ea53df9627b57cad617c796f093ff.png" alt="picture 5"></p>
+<p><img src="images/e80c1c496f584f070139369752f361acd53bfe360d4c49763e08c1a234ad4d95.png" alt="picture 7"></p>
+<p><img src="images/961ca941ef45122ade44c294acfcd2471be542af0fee35f64c66fcd1d60c51ee.png" alt="picture 8"></p>
+<p><img src="images/ea8523b7ff69bbfac7d960b46d49a4b7c5533ed0e8be91f11c6d9c90ae5bf71e.png" alt="picture 12"></p>
+<p>참조자는 상수 안되고 NULL 안되고 값이 배열같은 변수여야 함.</p>
+<p><img src="images/337fd746ab894e837fdaa126249c5b602573083cb0eff437a7dabf6342d5e399.png" alt="picture 9"></p>
+<p><img src="images/380a0ece06da52536bfaab9df33ee1d3a2924b3b52ab56c132947559046b89d5.png" alt="picture 10"><br>
+벡터 두개를 복사하는 데 걸리는 시간 O(n)</p>
+<p><img src="images/a6a3292cf0d23a8242f6d8abf1f5eaf7c6692a72c493ae45e004949c16c78dcf.png" alt="picture 11"><br>
+참조자를 사용하여 메모리 주소만 넘기기 때문에 O(1) 만 걸림</p>
+<p><img src="images/d12d4bcb557929f2a957b673f51b9aab1bdbb5967450d3cd54860f9db8795fd3.png" alt="picture 13"></p>
+<p><img src="images/ac0edcafc8a608076d0194c3c63220796cd52ced7c57c05cb1332fc065f65406.png" alt="picture 14"></p>
+<p>문자열 입력받을 때 <code>cin</code> 은 공백에서 끊기 때문에, <code>getline</code> 사용할 것.</p>
+<p><img src="images/55294ffedb4df640b2cb6b2a149a05f0d45fbd67ce3522c57036e185d942ee41.png" alt="picture 15"></p>
+<p><img src="images/3b4bc1e8a4d839f8af12866a96b7c271bf3afef4c6c7ddb1924f9f138591400d.png" alt="picture 16"></p>
+<p><img src="images/1998edb06a7647e45bb1385876d575f317f577103ff0a1594d5dd55fee7f258b.png" alt="picture 17"></p>
+<p>전자는 c++ 이 아닌 c 의 입출력 스트림을 끊어버리는 것. 일반적으로 clang 은 c/c++ 동시에 사용할 수 있도록 되어 있기 때문에, 입출력 스트림이 동기화되어 있다. 따라서 c++ 에서 문자열 입력시, 매번 c와 싱크해주는 작업이 수반되므로 TC 입력 시, 시간초과 날 수 있다. 해당 명령어는 이런 스트림 동기화를 끊으므로, 실행 후에는 cout 만 사용할 것!</p>
+<p>후자는 출력 버퍼를 계속 열어두겠다는 뜻. 일반적으로 버퍼란 사용자의 인터페이스에 최적화된 환경으로 개행문자나 특정 조건 만족시 버퍼에 들어간 문자열을 모두 비우므로서 스트림에 전달되는 구조이지만, 채점 저지 사이트에서는 입력 따위 보일 필요도 없고 알 바가 아니기 때문에, 출력에만 신경쓴다. 그니깐, 출력   버퍼를 열어두므로서 초기 화를 매번하는 상황을 피하므로서 시간을 번다.</p>
+<p><img src="images/312f79035ae5e0946b8c10b31cc436427318196d5be39a51406edf96c30dd4ee.png" alt="picture 18"></p>
+<p>줄바꿈과 출력 버퍼를 비워주는 행동이기 때문에,, 기껏 위에 실행한 명령어가 의미가 없어지게 된다.</p>
+<p><img src="images/88c98005672afe44ea3b246b938800d9356c939944a6a5f6eff63cd58b87c2e8.png" alt="picture 19"></p>
+<p>배열 초기화 방법.<br>
+첫번째는 음,, 0 혹은 -1 로 전달하지 않으면 오동작의 여지가 있음.
+두번째는 for 을 통한 초기화으로 언제나 사용 가능 능지
+세번째는 fill 함수를 이용한 방법으로 제일 쉽고 간편함.
+그리고 전역에 배열 선언하면 자동으로 0 으로 초기화됨.</p>
+<p><img src="images/a150681fd8de98a74753c4813d94727ac02e4ffb23d0aac569efbcdc856dc4f4.png" alt="picture 20"></p>
+<p>stl vector 관한 일반적인 사항. 구현한 insert 및 erase 기능들이 만들어져 있다. 특히 = 연산자 사용시 deepcopy 이므로 원본에는 영향이 없다. 다만, 역시 O(N) 의 시간복잡도가 지연됨을 유의할 것.</p>
+<p><img src="images/77d0c957faabaa8dab9f6e4d6895e99391fff8d858295a57285e2df1f9097239.png" alt="picture 21"></p>
+<p><img src="images/93312ec007031d323953d688ec0232349148c1cd8017ffbe200d9e3537e8ebac.png" alt="picture 22"></p>
+<p>for 문을 직관적으로 사용하는 예시가 제시. 다만 위의 e에서 &amp;을 붙이면 값을 변경할 수 있다.</p>
+<p><img src="images/78ada1831c177efbfdc9b159cdbc618b1ac50ef0cda09d53db3e36779976196a.png" alt="picture 23"></p>
+<p>야매 연결 리스트 외워두기!!</p>
+<p>5
+1 23 53 77 60</p>
+<p><img src="images/1716621259907.png" alt="">
+<img src="images/1716622564726.png" alt=""></p>
+
+</body>
+</html>
