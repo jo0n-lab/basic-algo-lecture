@@ -9,7 +9,11 @@ using namespace std;
 #define Y second
 
 int N;
-int vis[17][17];
+// int vis[17][17];
+int vis1[17];
+int vis2[34];
+int vis3[34];
+// we don't need vis for row!
 pair<int, int> Qpos[17];
 int ans = 0;
 
@@ -56,7 +60,7 @@ bool is_possible(int x, int y, int k) {
     return true;
 }
 
-void func(int k, int x, int y) {
+void func(int k, int cur) {
     if (k > N) {
         ans++;
 #ifdef __DEBUG__
@@ -64,19 +68,22 @@ void func(int k, int x, int y) {
 #endif
         return;
     } else {
-        for (int i = x; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (vis[i][j] == 0) {
-                    if (is_possible(i, j, k - 1) == true) {
-                        Qpos[k] = {i, j};
+        for (int j = 0; j < N; j++) {
+            // if (is_possible(i, j, k - 1) == true) {
+            if (vis1[j] == 0 && vis2[cur + j] == 0 && vis3[cur - j + N - 1] == 0) {
+                // Qpos[k] = {i, j};
 #ifdef __DEBUG__
-                        print_case(k);
+                print_case(k);
 #endif
-                        vis[i][j] = 1;
-                        func(k + 1, i+1, j);
-                        vis[i][j] = 0;
-                    }
-                }
+                // vis[i][j] = 1;
+                vis1[j] = 1;
+                vis2[cur + j] = 1;
+                vis3[cur - j + N - 1] = 1;
+                func(k + 1, cur + 1);
+                vis1[j] = 0;
+                vis2[cur + j] = 0;
+                vis3[cur - j + N - 1] = 0;
+                // vis[i][j] = 0;
             }
         }
     }
@@ -87,6 +94,6 @@ int main() {
     cin.tie(NULL);
 
     cin >> N;
-    func(1, 0, 0);
+    func(1, 0);
     cout << ans;
 }
