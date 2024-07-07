@@ -35,8 +35,8 @@ int main() {
     cout << "\n";
 #endif
 
-    sort(num1, num1 + N);
-    sort(num2, num2 + M);
+    // sort(num1, num1 + N);
+    // sort(num2, num2 + M);
 
     int apos = 0;
     int bpos = 0;
