@@ -18,12 +18,14 @@ int main() {
         return 0;
     }
 
+    cache[0] = 1;
     cache[2] = 3;
-	cache[4] = 
-	int uniq=4;
-
+    int uniq = 2;
     for (int i = 4; i <= n; i += 2) {
-		cache[i]+=cache[i-2]+uniq+3*3;
+        cache[i] = cache[i - 2] * cache[2];
+        for (int j = 4; j <= i; j += 2) {
+            cache[i] += cache[i - j] * uniq;
+        }
     }
 
     cout << cache[n];
