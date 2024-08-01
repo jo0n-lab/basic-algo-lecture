@@ -27,15 +27,12 @@ int main(){
 	}
 
 	int n=source.length();
-	int m=target.length();
-	int spos=0;
-	int tpos=0;
 	
+
 	for(int i=0;i<n;i++){
-		int j=0;
-		for(;j<m;j++){
-			if(source[i]=target[j]) break;
-		}
+		
+
+	}
 
 
 
