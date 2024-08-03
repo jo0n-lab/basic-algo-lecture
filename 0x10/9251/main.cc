@@ -27,9 +27,15 @@ int main(){
 	}
 
 	int n=source.length();
+	int m=target.length();
+	int start=m;
 	
-
 	for(int i=0;i<n;i++){
+		char c=source[i];
+		for(int j=0;j<m;j++){
+			if(target[j]!=c) continue;
+
+
 		
 
 	}
