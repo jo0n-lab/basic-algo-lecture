@@ -5,12 +5,20 @@ void set_example(){
   set<int> s;
   s.insert(-10); s.insert(100); s.insert(15); // {-10, 15, 100}
   s.insert(-10); // {-10, 15, 100}
+  
   cout << s.erase(100) << '\n'; // {-10, 15}, 1
   cout << s.erase(20) << '\n'; // {-10, 15}, 0
+  // returns 1 if deleted target or 0
+
   if(s.find(15) != s.end()) cout << "15 in s\n";
   else cout << "15 not in s\n";
+  // returns pos of target or *.end()
+  // ... alone itself not suggested -> with s.end() check
+  
   cout << s.size() << '\n'; // 2
   cout << s.count(50) << '\n'; // 0
+  // returns num of target
+
   for(auto e : s) cout << e << ' ';
   cout << '\n';
   s.insert(-40); // {-40, -10, 15}
