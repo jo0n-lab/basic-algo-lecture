@@ -4,6 +4,13 @@ using namespace std;
 int heap[100005];
 int sz = 0; // heap에 들어있는 원소의 수
 
+void print(){
+	cout<<"PRINT:: ";
+	for(int i=1;i<=sz;i++)
+		cout<<heap[i]<<" ";
+	cout<<"\n";
+}
+
 void push(int x){
   heap[++sz] = x;
   int idx = sz;
@@ -36,13 +43,18 @@ void pop(){
 
 void test(){
   push(10); push(2); push(5); push(9); // {10, 2, 5, 9}
+  print();
   cout << top() << '\n'; // 2
   pop(); // {10, 5, 9}
+  print();
   pop(); // {10, 9}
+  print();
   cout << top() << '\n'; // 9
   push(5); push(15); // {10, 9, 5, 15}
+  print();
   cout << top() << '\n'; // 5
   pop(); // {10, 9, 15}
+  print();
   cout << top() << '\n'; // 9
 }
 
